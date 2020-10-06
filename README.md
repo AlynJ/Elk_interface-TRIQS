@@ -2,32 +2,36 @@
                        |    The Elk interface Code    |
                        +------------------------------+
 
-This is an altered elk-6.2.8 version which outputs the required files for the Elk-TRIQS 
-interface. This is distributed under the terms of the GNU General Public License.
-Details of the original Elk README file is at the bottom of this document.
+This is an altered elk-6.2.8 version which outputs the required files for the 
+Elk-TRIQS interface. This is distributed under the terms of the GNU General 
+Public License. Details of the original Elk README file is at the bottom of 
+this document.
 
-This is an initial version written by Alyn D. N. James from the University of Bristol (UoB),
-United Kingdom. Note that this version is subject to changes. The intent is to provide an 
-open source FP-LAPW code interfaced with the TRIQS library. Therefore, DFT+DMFT will be more 
-accessible to the community. Hopefully, this will be integrated into the main Elk 
-distribution in the foreseeable future. We would like to thank the Elk and TRIQS developers 
+This is an initial version written by Alyn D. N. James from the University of 
+Bristol (UoB), United Kingdom. Note that this version is subject to changes. 
+The intent is to provide an open source FP-LAPW code interfaced with the TRIQS 
+library. Therefore, DFT+DMFT will be more accessible to the community. 
+Hopefully, this will be integrated into the main Elk distribution in the 
+foreseeable future. We would like to thank the Elk and TRIQS developers 
 for their help with this interface.
 
 This interface is open source, but we ask you to cite "TBA" if you use it. 
 
-Full documentaion of using the interface can be found at https://triqs.github.io/dft_tools/.
+Full documentaion of using the interface can be found at 
+https://triqs.github.io/dft_tools/.
 
-There are examples of the Elk part of the interface in the ./examples/Wannier-Projector 
-directory.
+There are examples of the Elk part of the interface in the 
+./examples/Wannier-Projector directory.
 
-If you come across any issue with this interface, please create an issue on this GitHub with 
-a concise description about the problem and how we can reproduce it. 
+If you come across any issue with this interface, please create an issue on 
+this GitHub with a concise description about the problem and how we can 
+reproduce it. 
 
 We hope you enjoy using the interface!
 
 
 
---------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 
 
                        +------------------------------+
