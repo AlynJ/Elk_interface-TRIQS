@@ -16,7 +16,7 @@ interface.
 
 This interface is open source, but we ask you to cite "TBA" if you use it. 
 
-Please compile Elk using the GNU compilers as TRIQS is currently only support
+Please compile Elk using the GNU compilers as TRIQS is currently only supported
 with these compilers.
 
 Full documentaion of using the interface can be found at 
