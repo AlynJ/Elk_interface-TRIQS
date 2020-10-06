@@ -1,0 +1,3 @@
+This task reads in the DMATDMFT.OUT file generated in TRIQS. 
+This requires the TRIQS library for the DFT+DMFT FCSC calculation, 
+but the task which interfaces the TRIQS outputs to Elk can be used here for testing purposes. 

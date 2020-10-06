@@ -1,0 +1,60 @@
+!Calculates the V t2g Wannier projectors, Wannier charge and Wannier DOS of monolayer SrVO3 
+
+!Example by Alyn D. N. James
+
+tasks
+ 0
+ 805
+
+!PBE functional
+xctype
+ 20
+
+!   k-points mesh size
+ngridk
+ 15 15 1
+
+!   Path for species files
+sppath
+  '../../../species/'
+
+!   Maximum length for G+k vectors
+rgkmax
+ 7.0
+
+plot1d
+ 5 300
+  0.00000000  0.00000000  0.00000000 !Gamma
+  0.50000000  0.50000000  0.00000000 !M
+  0.50000000  0.00000000  0.00000000 !X
+  0.00000000  0.00000000  0.00000000 !Gamma
+  0.50000000  0.50000000  0.50000000 !R
+
+avec
+   7.407725875       0.000000000       0.000000000
+   0.000000000       7.407725875       0.000000000
+   0.000000000       0.000000000       37.794519772
+
+!optimised with GGA
+atoms
+   3                                    : nspecies
+'Sr.in'                                 : spfname
+   2                                    : natoms; atposl, bfcmt below
+    0.00000000    0.00000000    0.00000000    0.00000000  0.00000000  0.00000000
+    0.00000000    0.00000000    0.17582200    0.00000000  0.00000000  0.00000000
+'V.in'                                  : spfname
+   1                                    : natoms; atposl, bfcmt below
+    0.50000000    0.50000000    0.08791100    0.00000000  0.00000000  0.00000000
+'O.in'                                  : spfname
+   4                                    : natoms; atposl, bfcmt below
+    0.50000000    0.50000000    0.99132900    0.00000000  0.00000000  0.00000000
+    0.00000000    0.50000000    0.08791100    0.00000000  0.00000000  0.00000000
+    0.50000000    0.00000000    0.08791100    0.00000000  0.00000000  0.00000000
+    0.50000000    0.50000000    0.18448400    0.00000000  0.00000000  0.00000000
+
+wanproj		!projector flag
+ 1		!number of projectors - next 3 lines are repeated for each projector
+ 2 2 3		!species, atom, reduced max lm (rlmmax) value
+ 7 8 9 		!the lm quanties which will be projected (vector length eq. rlmmax)
+-0.0734 0.0404	![-2, 1.1] eV t2g correlated energy window 
+
