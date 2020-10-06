@@ -11,9 +11,8 @@ This is an initial version written by Alyn D. N. James from the University of
 Bristol (UoB), United Kingdom. Note that this version is subject to changes. 
 The intent is to provide an open source FP-LAPW code interfaced with the TRIQS 
 library. Therefore, DFT+DMFT will be more accessible to the community. 
-Hopefully, this will be integrated into the main Elk distribution in the 
-foreseeable future. We would like to thank the Elk and TRIQS developers 
-for their help with this interface.
+We would like to thank the Elk and TRIQS developers for their help with this 
+interface.
 
 This interface is open source, but we ask you to cite "TBA" if you use it. 
 
