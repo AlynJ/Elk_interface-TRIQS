@@ -17,7 +17,7 @@ interface.
 This interface is open source, but we ask you to cite "TBA" if you use it. 
 
 Please compile Elk using the GNU compilers as TRIQS is currently only supported
-with these compilers.
+with those compilers.
 
 Full documentaion of using the interface can be found at 
 https://triqs.github.io/dft_tools/.
