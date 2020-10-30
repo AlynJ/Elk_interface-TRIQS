@@ -3,13 +3,25 @@ elk-6.2.8 interface notes
 update 1:
 
 Introduced a new input flag called "wanind". When set to .true. in elk.in,
-the user has to input the upper and lower band indices* for the correlated
-energy window. These indices are input in the last line of the "wanproj"
-input flag instead of the energy window bounds.
+the user has to input the lower and upper band indices* (respectively) for 
+the correlated energy window. These indices are input in the last line of 
+the "wanproj" input flag instead of the energy window bounds.
+
+example input for the SrVO3 example:
+
+wanind
+ .true.
+
+wanproj
+ 1	!No. of projector species
+ 2 2 3	!species, l, lm submatrix size
+ 7 8 9	!lm indices
+ 21 25	!correlated energy window band indices.
+
 
 *Note that for magnetic systems (spin uncoupled calculations), only the 
-indices of the majority spin are used as inputs. The code calculates 
-the indices for the minority spin automatically.
+energy window indices of the majority spin are used as inputs. The code 
+calculates the indices for the minority spin automatically.
 
 Base code:
 
