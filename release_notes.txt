@@ -3,9 +3,13 @@ elk-6.2.8 interface notes
 update 1:
 
 Introduced a new input flag called "wanind". When set to .true. in elk.in,
-the user has to input the upper and lower band indices for the correlated
+the user has to input the upper and lower band indices* for the correlated
 energy window. These indices are input in the last line of the "wanproj"
 input flag instead of the energy window bounds.
+
+*Note that for magnetic systems (spin uncoupled calculations), only the 
+indices of the majority spin are used as inputs. The code calculates 
+the indices for the minority spin automatically.
 
 Base code:
 
