@@ -11,10 +11,11 @@ This is an initial version written by Alyn D. N. James from the University of
 Bristol (UoB), United Kingdom. Note that this version is subject to changes. 
 The intent is to provide an open source FP-LAPW code interfaced with the TRIQS 
 library. Therefore, DFT+DMFT will be more accessible to the community. 
-We would like to thank the Elk and TRIQS developers for their help with this 
+I would like to thank the Elk and TRIQS developers for their help with this 
 interface.
 
-This interface is open source, but we ask you to cite "TBA" if you use it. 
+This interface is open source, but I ask you to cite 
+"A. D. N. James et al., (2020) arXiv:2010.04694 [cond-mat.str-el]" if you use it. 
 
 Please compile Elk using the GNU compilers as TRIQS is currently only supported
 with those compilers.
@@ -26,10 +27,10 @@ There are examples of the Elk part of the interface in the
 ./examples/Wannier-Projector directory.
 
 If you come across any issue with this interface, please create an issue on 
-this GitHub with a concise description about the problem and how we can 
+this GitHub with a concise description about the problem and how I can 
 reproduce it. 
 
-We hope you enjoy using the interface!
+I hope you enjoy using the interface!
 
 
 
