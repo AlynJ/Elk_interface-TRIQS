@@ -10,8 +10,8 @@ use modomp
 implicit none
 !local variables
 integer iorb,lm,ia,is,l,ias,lmmax,rlm
-integer ld,ld2,ik,ist,nproj,nst
-integer i1,i2,i3,jk
+integer ld,ld2,ik,ist,nproj,nst,ispn
+integer i1,i2,i3,jk,imin,imax,iscp
 logical, allocatable :: done(:)
 complex(8), allocatable :: subulm(:,:,:,:)
 integer, allocatable :: sublm(:,:,:)
@@ -22,6 +22,11 @@ integer, allocatable :: idx(:,:), projst(:)
 
 if(norb.le.0) then
   write(*,*) 'No projected orbital specified. Stopping.'
+  stop
+endif
+!ensure correct the correlated window bounds
+if(emincor.gt.emaxcor) then
+  write(*,*) 'Lower correlated window bound greater than upper bound. Stopping.'
   stop
 endif
 !initalise the universal variables 
@@ -48,6 +53,23 @@ call olprad
 call hmlrad
 ! generate the spin-orbit coupling radial functions
 call gensocfr
+!check if input indices are correct
+if(wanind) then
+  !round input "indices" values to nearest integer
+  imin=nint(emincor)
+  imax=nint(emaxcor)
+  iscp=0
+  nst=nstsv
+  if(spcpl) iscp=1
+  !if spins are decoupled in Hamiltonian - spins are in two blocks
+  if((spinpol).and.(.not.spcpl)) nst=nstfv
+  if((imin.lt.1).or.(imin.gt.nst).or. &
+     (imax.lt.1).or.(imax.gt.nst)) then
+    write(*,*) 'Wrong band indices for correlated energy window used.'
+    write(*,*) 'Please changes these indices.'
+    stop
+  endif 
+endif
 !if outputting projectors into irreducible basis
 if(cubic) lmirep=.true.
 !if generating projectors of different ngridk, FS or bandstructure
@@ -123,12 +145,6 @@ idx(:,:)=0
 !allocate the number of band indices in the correlated window for each ik
 allocate(projst(nkpt))
 projst(:)=0
-!Output energy window
-if (mp_mpi) then
-  write(*,'("Energy window:")') 
-  write(*,*) emincor, emaxcor
-  write(*,'("")') 
-endif
 !determine the states in the band window
 do ik=1,nkpt
 !read the second variational energy eigenvalues from EVALSV.OUT
@@ -142,15 +158,38 @@ do ik=1,nkpt
 ! count and index states at k in energy window
   nst=0
 !k index for reading in eigenvectors in genwfsvpwan
-  do ist=1,nstsv
-    if(((evalsv(ist,ik)-efermi).ge.emincor).and. &
-       ((evalsv(ist,ik)-efermi).le.emaxcor)) then
-      nst=nst+1
-      idx(nst,ik)=ist
-    end if
-  end do
+! for band index inputs
+  if(wanind) then
+    !get indices for both spins (iscp is for spin coupled systems)
+    do ispn=1,nspinor-iscp
+      do ist=imin,imax
+        nst=nst+1
+        idx(nst,ik)=ist+(ispn-1)*nstfv
+      end do  
+    end do   
+! for energy window bounds input
+  else
+    do ist=1,nstsv
+      if(((evalsv(ist,ik)-efermi).ge.emincor) .and. & 
+         ((evalsv(ist,ik)-efermi).le.emaxcor)) then
+        nst=nst+1
+        idx(nst,ik)=ist
+      end if
+    end do
+  end if
   projst(ik)=nst
 enddo
+!Output energy window
+if (mp_mpi) then
+  if(wanind) then
+    write(*,'("Energy window boundary indices:")') 
+    write(*,*) imin, imax
+  else 
+    write(*,'("Energy window:")') 
+    write(*,*) emincor, emaxcor
+  endif
+  write(*,'("")') 
+endif
 !nst is now the maximum number of band indices
 nst=maxval(projst(:))
 !allocate the true k-dependent wannier projectors

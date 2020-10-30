@@ -1217,6 +1217,8 @@ integer, allocatable :: rorblm(:,:)
 real(8) emincor, emaxcor
 !logical to determine if projector is outputted in lm or irreducible lm basis
 logical cubic
+!logical to determine if band indices are going to be used for correlated window
+logical wanind
 !end edit
 
 end module

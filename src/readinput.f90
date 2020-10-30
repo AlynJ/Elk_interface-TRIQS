@@ -324,6 +324,7 @@ tcden=.false.
 ! adnj edit - projector variables
 norb=0
 cubic=.true.
+wanind=.false.
 
 
 !--------------------------!
@@ -1941,6 +1942,9 @@ case('wanproj')
 !which basis to output projector in
 case('cubic')
   read(50,*,err=20) cubic
+!Using band indices for correlated window
+case('wanind')
+  read(50,*,err=20) wanind
 !end edit
 case('')
   goto 10

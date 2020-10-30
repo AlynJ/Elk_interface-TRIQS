@@ -1,5 +1,14 @@
 elk-6.2.8 interface notes
 
+update 1:
+
+Introduced a new input flag called "wanind". When set to .true. in elk.in,
+the user has to input the upper and lower band indices for the correlated
+energy window. These indices are input in the last line of the "wanproj"
+input flag instead of the energy window bounds.
+
+Base code:
+
 The following subroutines have been updated or are new (*) (see "adnj" comments)
 for this interface:
 
