@@ -15,7 +15,7 @@ I would like to thank the Elk and TRIQS developers for their help with this
 interface.
 
 This interface is open source, but I ask you to cite 
-"A. D. N. James et al., (2020) arXiv:2010.04694 [cond-mat.str-el]" if you use it. 
+"A. D. N. James et al., Phys. Rev. B 103, 035106 (2021)" if you use it. 
 
 Please compile Elk using the GNU compilers as TRIQS is currently only supported
 with those compilers.
